@@ -21,6 +21,21 @@ describe 'converting an Arabic number to a Roman numeral' do
       expect(convert_to_roman(6)).to eq "VI"
     end
 
+    it 'converts 11 to XXI' do
+      expect(convert_to_roman(11)).to eq "XI"
+    end
+
+    it 'converts 20 to XX' do
+      expect(convert_to_roman(20)).to eq "XX"
+    end
+
+    it 'converts 354 to CCCLIV' do
+      expect(convert_to_roman(354)).to eq "CCCLIIII"
+    end
+
+    it 'converts 2451 to MMCDLI' do
+      expect(convert_to_roman(2451)). to eq 'MMCCCCLI'
+    end
   end
 
   describe 'modern Roman numerals' do

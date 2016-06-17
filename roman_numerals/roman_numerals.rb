@@ -28,25 +28,28 @@ def convert_to_roman(arabic_number)
     1 => "I",
   }
 
-roman_numeral = ""
+  #  old_roman_numerals = {
+  #   1 => "I",
+  #   5 => "V",
+  #   10 => "X",
+  #   50 => "L",
+  #   100 => "C",
+  #   500 => "D",
+  #   1000 => "M",
+  # }
 
-  if old_roman_numerals[arabic_number]
-    old_roman_numerals[arabic_number]
-  else
+  roman_numeral = ""
+
+  while arabic_number > 0
     old_roman_numerals.each do |key, value|
-      if arabic_number > key
+      if arabic_number >= key
         roman_numeral << value
         arabic_number = arabic_number - key
-        if arabic_number == 0
-          break
-        else
-          convert_to_roman(arabic_number) 
-          #Calling the method resets roman_numeral to empty string every time the program runs. Need to debug to retain value of roman_numeral   
-        end
+        break
       end
     end
-    roman_numeral
   end
+  roman_numeral
 end
 
 
