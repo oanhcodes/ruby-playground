@@ -13,23 +13,34 @@ class Gameboard
   end
 
   def to_s
-    # Elements in the internal arrays are separated by "|". A new line is the added after each one to print out the board pretty!
     @board.map {|row| row.join("|")}.join("\n")
+    # Elements in the internal arrays are separated by "|". A new line is the added after each one to print out the board pretty!
   end
 
 end
 
 class Game
-  def initialize(players)
+  attr_reader :gameboard
+  def initialize(ship_details)
+    @gameboard = Gameboard.new
+    @fleet = Fleet.new
+    @ship_details = ship_details
   end
 
   def winner?
   end
 
-  def create_fleet
+  def get_fleet
+    @fleet.create_fleet(@ship_details)
+    puts @fleet.ships
+  end
+
+  def open_spot
   end
 
   def place_ships
+
+    
   end
 
 end
