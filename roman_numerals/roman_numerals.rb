@@ -15,7 +15,7 @@
 #There is no Roman numeral for 0. 
   #Return nil?
   #raise error?
-
+  #return empty string?
 
 def convert_to_roman(arabic_number)
   old_roman_numerals = {
@@ -31,14 +31,22 @@ def convert_to_roman(arabic_number)
 roman_numeral = ""
 
   if old_roman_numerals[arabic_number]
-    roman_numeral << old_roman_numerals[arabic_number]
+    old_roman_numerals[arabic_number]
   else
     old_roman_numerals.each do |key, value|
       if arabic_number > key
         roman_numeral << value
         arabic_number = arabic_number - key
+        if arabic_number == 0
+          break
+        else
+          convert_to_roman(arabic_number) 
+          #Calling the method resets roman_numeral to empty string every time the program runs. Need to debug to retain value of roman_numeral   
+        end
       end
     end
+    roman_numeral
   end
-  roman_numeral
 end
+
+
