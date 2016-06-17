@@ -1,3 +1,3 @@
 # Ruby Playground
 
-## A place to practice Ruby
+A place to practice Ruby
