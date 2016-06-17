@@ -17,7 +17,7 @@
   #raise error?
   #return empty string?
 
-def convert_to_roman(arabic_number)
+def convert_to_roman(arabic_number, options = {})
   old_roman_numerals = {
     1000 => "M",
     500 => "D",
@@ -28,6 +28,23 @@ def convert_to_roman(arabic_number)
     1 => "I",
   }
 
+  modern_roman_numerals = {
+    1000 => "M",
+    900 => "CM",
+    500 => "D",
+    400 => "CD",
+    100 => "C",
+    90 => "XC",
+    50 => "L",
+    40 => "XL",
+    10 => "X",
+    9 => "IX",
+    5 => "V",
+    4 => "IV",
+    1 => "I",
+  }
+
+
   roman_numeral = ""
 
   if arabic_number == 0
@@ -35,15 +52,28 @@ def convert_to_roman(arabic_number)
     # Another option would be to return nil
   end
 
-  while arabic_number > 0
-    old_roman_numerals.each do |key, value|
-      if arabic_number >= key
-        roman_numeral << value
-        arabic_number = arabic_number - key
-        break
+
+  if options == {modern: true}
+    while arabic_number > 0
+      modern_roman_numerals.each do |key, value|
+        if arabic_number >= key
+          roman_numeral << value
+          arabic_number = arabic_number - key
+          break
+        end
       end
     end
-  end
+  else
+    while arabic_number > 0
+      old_roman_numerals.each do |key, value|
+        if arabic_number >= key
+          roman_numeral << value
+          arabic_number = arabic_number - key
+          break
+        end
+      end
+    end
+  end 
   roman_numeral
 end
 
