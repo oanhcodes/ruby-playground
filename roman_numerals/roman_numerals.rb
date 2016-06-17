@@ -44,36 +44,27 @@ def convert_to_roman(arabic_number, options = {})
     1 => "I",
   }
 
-
   roman_numeral = ""
 
-  if arabic_number == 0
-    raise StandardError, "0 cannot be converted into a Roman Numeral"
-    # Another option would be to return nil
+  raise StandardError, "0 cannot be converted into a Roman Numeral" if arabic_number == 0
+
+  case options 
+  when {modern: true}
+    roman_num_hash = modern_roman_numerals
+  when {}
+    roman_num_hash = old_roman_numerals
   end
 
+  while arabic_number > 0
+    roman_num_hash.each do |key, value|
+      if arabic_number >= key
+        roman_numeral << value
+        arabic_number = arabic_number - key
+        break
+      end
+    end
+  end
 
-  if options == {modern: true}
-    while arabic_number > 0
-      modern_roman_numerals.each do |key, value|
-        if arabic_number >= key
-          roman_numeral << value
-          arabic_number = arabic_number - key
-          break
-        end
-      end
-    end
-  else
-    while arabic_number > 0
-      old_roman_numerals.each do |key, value|
-        if arabic_number >= key
-          roman_numeral << value
-          arabic_number = arabic_number - key
-          break
-        end
-      end
-    end
-  end 
   roman_numeral
 end
 
