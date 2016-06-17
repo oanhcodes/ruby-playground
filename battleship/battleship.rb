@@ -2,9 +2,10 @@
 # Objects: Gameboard, Player, Ships
 # Behaviors: 
   # Gameboard
-   # create_board, mark hit, mark miss, send ship sunk alert, send winner alert, pretty board
+   # create_board, pretty board, mark hit, mark miss,
   # Player: number of active ships, send attack, place ship (random or manual) user or computer
   # Ships: size, number of hits, sunk?, increase hit count
+  # Game: players, send winner alert, send ship sunk alert
 
 class Gameboard
   def initialize
@@ -15,11 +16,70 @@ class Gameboard
     # Elements in the internal arrays are separated by "|". A new line is the added after each one to print out the board pretty!
     @board.map {|row| row.join("|")}.join("\n")
   end
+
 end
 
+class Game
+  def initialize(players)
+  end
 
+  def winner?
+  end
 
+  def create_fleet
+  end
 
-#Driver code
-battleship = Gameboard.new
-puts battleship
+  def place_ships
+  end
+
+end
+
+class Player
+
+  def initialize
+  end
+
+  def place_ships
+  end
+
+  def send_attack
+  end
+
+  def active_ship_num
+  end
+end
+
+class Ship
+  attr_reader :name, :size, :hits
+
+  def initialize(args)
+    @name = args[:name]
+    @size = args[:size]
+    @hits = 0
+  end
+
+  def sunk?
+    @hits >= @size
+  end
+
+  def increase_hit_count
+    @hits += 1
+  end
+end
+
+class Fleet
+  attr_reader :ships
+
+  def initialize
+    @ships= []
+  end
+
+  def add_ship(ship)
+    @ships.push(ship)
+  end
+
+  def create_ship(args)
+    self.add_ship(Ship.new(args))
+  end
+
+end
