@@ -28,17 +28,12 @@ def convert_to_roman(arabic_number)
     1 => "I",
   }
 
-  #  old_roman_numerals = {
-  #   1 => "I",
-  #   5 => "V",
-  #   10 => "X",
-  #   50 => "L",
-  #   100 => "C",
-  #   500 => "D",
-  #   1000 => "M",
-  # }
-
   roman_numeral = ""
+
+  if arabic_number == 0
+    raise StandardError, "0 cannot be converted into a Roman Numeral"
+    # Another option would be to return nil
+  end
 
   while arabic_number > 0
     old_roman_numerals.each do |key, value|
@@ -52,4 +47,7 @@ def convert_to_roman(arabic_number)
   roman_numeral
 end
 
+# Driver Code
+# puts convert_to_roman(764)
+# puts convert_to_roman(0)
 
