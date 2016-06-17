@@ -1,12 +1,8 @@
 require_relative 'battleship'
 
-ship1 = Ship.new(:name => "Carrier", :size => 5)
-
-puts ship1.name
-puts ship1.size
-puts ship1.class
+# Create a constant collection of ship details
+BATTLESHIPS = [{:name => "Carrier", :size => 5, :quantity => 1}, {:name => "Battleship", :size => 4, :quantity => 1}, {:name => "Cruiser", :size => 3, :quantity => 1}, {:name => "Destroyer", :size => 2, :quantity => 2}, {:name => "Submarine", :size => 1, :quantity => 2}]
 
 fleet1 = Fleet.new
-fleet1.create_ship(:name => "Carrier", :size => 5)
-
-puts fleet1.ships[0].name
+fleet1.create_fleet(BATTLESHIPS)
+puts fleet1.ships
