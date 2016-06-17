@@ -6,7 +6,7 @@
   # Player: number of active ships, send attack, place ship (random or manual) user or computer
   # Ships: size, number of hits, sunk?, increase hit count
 
-class Board
+class Gameboard
   def initialize
     @board = Array.new(10, Array.new(10, "-"))
   end
@@ -21,5 +21,5 @@ end
 
 
 #Driver code
-battleship = Board.new
+battleship = Gameboard.new
 puts battleship
